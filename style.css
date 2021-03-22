@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+tr:nth-child(even) {
+    background-color: rgb(238 238 238);
+}
+th {
+    background-color: #5a5a5a;
+    color: #fff;
+}
+td.selected {
+    /* background-color: green; */
+    border: 3px solid rgb(53 121 248);
+}
+input[type='text'] {
+    border: none;
+    outline: none;
+}
