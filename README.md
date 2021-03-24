@@ -2,4 +2,6 @@
 
 You can edit this table :)
 
-This is the version 1
+## Online Demo
+
+https://editable-data-table.cukka.design

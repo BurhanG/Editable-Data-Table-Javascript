@@ -36,3 +36,33 @@ input[type='text'] {
     border: none;
     outline: none;
 }
+
+/*Right Clik Menu*/
+
+#context-menu {
+    position: fixed;
+    z-index: 10000;
+    width: 100px;
+    background: #1b1a1a;
+    border-radius: 5px;
+    transform: scale(0);
+    transform-origin: top left;
+    overflow: hidden;
+}
+#context-menu.active {
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+}
+#context-menu .item {
+    padding: 8px 10px;
+    font-size: 15px;
+    color: #eee;
+}
+#context-menu .item:hover {
+    background: #555;
+    cursor: pointer;
+}
+#context-menu .item i {
+    display: inline-block;
+    margin-right: 5px;
+}

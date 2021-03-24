@@ -7,9 +7,11 @@ let isMouseDown = false;
 let startRowIndex = null;
 let startCellIndex = null;
 
+let cellText;
 
-
-
+const contextCut = document.querySelector('#cut');
+const contextCopy = document.querySelector('#copy');
+const contextPaste = document.querySelector('#paste');
 
 
 function index(el) {
@@ -244,6 +246,36 @@ document.body.addEventListener('keydown', e => {
 
     } else if (selectedCells.length == 0) {
         console.log('no cell selected, quick go back');
+    } else {
+        console.log('startCellIndex', startCellIndex)
+        console.log('startRowIndex', startRowIndex)
+        switch (e.code) {
+
+            case ('ArrowUp'):
+                removeSelected();
+                selectCell({ rowIndex: startRowIndex, cellIndex: startCellIndex })
+                startCellIndex = startCellIndex;
+                startRowIndex = startRowIndex
+                break;
+            case ('ArrowDown'):
+                removeSelected();
+                selectCell({ rowIndex: startRowIndex, cellIndex: startCellIndex })
+                startCellIndex = startCellIndex;
+                startRowIndex = startRowIndex
+                break;
+            case ('ArrowRight'):
+                removeSelected();
+                selectCell({ rowIndex: startRowIndex, cellIndex: startCellIndex })
+                startCellIndex = startCellIndex;
+                startRowIndex = startRowIndex
+                break;
+            case ('ArrowLeft'):
+                removeSelected();
+                selectCell({ rowIndex: startRowIndex, cellIndex: startCellIndex })
+                startCellIndex = startCellIndex;
+                startRowIndex = startRowIndex
+                break;
+        }
     }
 
 })
@@ -289,6 +321,38 @@ document.addEventListener('mouseup', () => {
     isMouseDown = false;
 });
 
+// Right Click
+cellsContainer.addEventListener("contextmenu", function (event) {
+    console.log('contextmenu fired');
+
+    event.preventDefault();
+
+    var contextElement = document.getElementById("context-menu");
+    contextElement.style.top = event.pageY + "px";
+    contextElement.style.left = event.pageX + "px";
+    console.warn(event)
+    console.log('event.offsetY', event.offsetY)
+    console.log('event.offsetX', event.offsetX)
+    contextElement.classList.add("active");
+
+});
+contextCut.addEventListener('click', () => {
+    const selectedCell = document.querySelector('.selected')
+    cellText = selectedCell.innerHTML;
+    selectedCell.innerHTML = '';
+})
+contextCopy.addEventListener('click', () => {
+    const selectedCell = document.querySelector('.selected')
+    cellText = selectedCell.innerText;
+})
+contextPaste.addEventListener('click', () => {
+    const selectedCell = document.querySelector('.selected')
+    if (cellText) {
+        selectedCell.innerHTML = cellText;
+    }
+})
 
 
-
+window.addEventListener("click", function () {
+    document.getElementById("context-menu").classList.remove("active");
+});
